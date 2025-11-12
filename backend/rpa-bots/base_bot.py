@@ -1,35 +1,12 @@
 import time
 import uuid
 from datetime import datetime
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 from database import Database
 
 class BaseBot:
     def __init__(self, bot_name):
         self.bot_name = bot_name
         self.db = Database()
-        self.driver = None
-
-    def setup_driver(self):
-        """Setup Chrome WebDriver"""
-        try:
-            service = Service(ChromeDriverManager().install())
-            options = webdriver.ChromeOptions()
-            options.add_argument('--headless')  # Run in background
-            options.add_argument('--no-sandbox')
-            options.add_argument('--disable-dev-shm-usage')
-            self.driver = webdriver.Chrome(service=service, options=options)
-            print(f"{self.bot_name}: WebDriver setup completed")
-        except Exception as e:
-            print(f"{self.bot_name}: Error setting up WebDriver: {e}")
-
-    def close_driver(self):
-        """Close WebDriver"""
-        if self.driver:
-            self.driver.quit()
-            print(f"{self.bot_name}: WebDriver closed")
 
     def log_start(self):
         """Log bot start"""
@@ -83,14 +60,8 @@ class BaseBot:
         start_time = time.time()
         
         try:
-            # Setup
-            self.setup_driver()
-            
             # Execute bot-specific logic
             self.execute()
-            
-            # Cleanup
-            self.close_driver()
             
             # Log success
             execution_time = round(time.time() - start_time, 2)
@@ -100,9 +71,6 @@ class BaseBot:
             print(f"{self.bot_name}: Bot execution completed successfully in {execution_time} seconds")
             
         except Exception as e:
-            # Cleanup
-            self.close_driver()
-            
             # Log failure
             execution_time = round(time.time() - start_time, 2)
             failure_log_id = f"log{int(time.time() * 1000000)}"  # Generate new unique ID
