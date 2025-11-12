@@ -8,22 +8,15 @@ class NSEBot(BaseBot):
 
     def execute(self):
         """Simulate scraping stock information from NSE"""
-        print(f"{self.bot_name}: Scraping stock information from NSE")
+        print(f"{self.bot_name}: Simulating stock information update")
         
-        # Simulate web scraping
-        time.sleep(random.uniform(2, 5))
-        
-        # In a real implementation, this would:
-        # 1. Navigate to NSE website
-        # 2. Scrape stock information
-        # 3. Parse the data
-        # 4. Save to database
+        # Simulate processing time
+        time.sleep(random.uniform(1, 3))
         
         # For demonstration, we'll simulate adding/updating stocks
         self.db.connect()
         
-        # Check if NEWCO stock exists
-        # In a real implementation, this would come from actual scraping
+        # Add a new stock
         stock_data = (
             f"s{int(time.time())}",
             "NEWCO",
@@ -36,7 +29,6 @@ class NSEBot(BaseBot):
         self.db.add_stock(stock_data)
         
         # Update a random existing stock price
-        # In a real implementation, this would come from actual scraping
         existing_stocks = ["s1", "s2", "s3", "s4", "s5"]
         stock_id = random.choice(existing_stocks)
         new_price = round(random.uniform(100, 2000), 2)

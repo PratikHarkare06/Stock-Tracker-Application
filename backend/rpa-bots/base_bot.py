@@ -33,7 +33,7 @@ class BaseBot:
 
     def log_start(self):
         """Log bot start"""
-        log_id = f"log{int(time.time())}"
+        log_id = f"log{int(time.time() * 1000000)}"  # Use microseconds for uniqueness
         log_data = (
             log_id,
             self.bot_name,
@@ -94,7 +94,8 @@ class BaseBot:
             
             # Log success
             execution_time = round(time.time() - start_time, 2)
-            self.log_success(log_id, execution_time)
+            success_log_id = f"log{int(time.time() * 1000000)}"  # Generate new unique ID
+            self.log_success(success_log_id, execution_time)
             
             print(f"{self.bot_name}: Bot execution completed successfully in {execution_time} seconds")
             
@@ -104,7 +105,8 @@ class BaseBot:
             
             # Log failure
             execution_time = round(time.time() - start_time, 2)
-            self.log_failure(log_id, execution_time, str(e))
+            failure_log_id = f"log{int(time.time() * 1000000)}"  # Generate new unique ID
+            self.log_failure(failure_log_id, execution_time, str(e))
             
             print(f"{self.bot_name}: Bot execution failed after {execution_time} seconds: {e}")
             raise e

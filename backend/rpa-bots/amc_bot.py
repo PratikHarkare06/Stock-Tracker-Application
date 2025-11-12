@@ -8,16 +8,10 @@ class AMCBot(BaseBot):
 
     def execute(self):
         """Simulate scraping mutual fund information from AMC websites"""
-        print(f"{self.bot_name}: Scraping mutual fund information from AMC websites")
+        print(f"{self.bot_name}: Simulating mutual fund information update")
         
-        # Simulate web scraping
-        time.sleep(random.uniform(3, 7))
-        
-        # In a real implementation, this would:
-        # 1. Navigate to various AMC websites
-        # 2. Scrape mutual fund portfolio data
-        # 3. Parse the data
-        # 4. Save to database
+        # Simulate processing time
+        time.sleep(random.uniform(2, 5))
         
         # For demonstration, we'll simulate adding funds and holdings
         self.db.connect()

@@ -8,16 +8,10 @@ class IndicesBot(BaseBot):
 
     def execute(self):
         """Simulate scraping index information"""
-        print(f"{self.bot_name}: Scraping index information")
+        print(f"{self.bot_name}: Simulating index information update")
         
-        # Simulate web scraping
-        time.sleep(random.uniform(1, 3))
-        
-        # In a real implementation, this would:
-        # 1. Navigate to index data sources
-        # 2. Scrape index values
-        # 3. Parse the data
-        # 4. Save to database
+        # Simulate processing time
+        time.sleep(random.uniform(1, 2))
         
         # For demonstration, we'll simulate updating indices
         self.db.connect()
