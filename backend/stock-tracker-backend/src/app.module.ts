@@ -15,12 +15,8 @@ import { BotLog } from './entities/BotLog.entity';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'stocktracker',
-      password: 'stocktracker',
-      database: 'stocktracker',
+      type: 'sqlite',
+      database: 'database.sqlite',
       entities: [Stock, MutualFund, FundHolding, Index, BotLog],
       synchronize: true, // Only for development
       logging: false,

@@ -14,7 +14,7 @@ export class BotLog {
   @Column('decimal', { precision: 10, scale: 2 })
   execution_time: number;
 
-  @Column('timestamp')
+  @Column('datetime')
   timestamp: Date;
 
   @Column({ nullable: true, type: 'text' })
