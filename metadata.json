@@ -1,0 +1,5 @@
+{
+  "name": "Stock Tracker: Fund Overlap Analyzer",
+  "description": "A web application to compare mutual funds, identify overlapping stocks, and view detailed stock and index information. This provides a user-friendly interface to analyze fund portfolios.",
+  "requestFramePermissions": []
+}
